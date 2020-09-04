@@ -1,11 +1,14 @@
 package application;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 // import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-// import javafx.scene.control.Label;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 // import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -27,34 +30,72 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //------Embedding Layouts
+        //------GridPane
 
-        window = primaryStage;
-        window.setTitle("Embedding Tutorial");
+        window= primaryStage;
+        window.setTitle("This is my creative title");
 
-        HBox topMenu = new HBox();
-        Button buttonA = new Button("File");
-        Button buttonB = new Button("Edit");
-        Button buttonC = new Button("View");
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
 
-        topMenu.getChildren().addAll(buttonA, buttonB, buttonC);
+        Label nameLabel = new Label ("Username");
+        GridPane.setConstraints(nameLabel, 0, 0);
 
-        VBox sideMenu = new VBox();
-        Button buttonD = new Button("Search");
-        Button buttonE = new Button("Record");
-        Button buttonF = new Button("Play");
+        TextField nameInput = new TextField("Sample Username");
 
-        sideMenu.getChildren().addAll(buttonD, buttonE, buttonF);
+        GridPane.setConstraints(nameInput, 1, 0);
 
-        BorderPane borderPane = new BorderPane();
+        Label passLabel = new Label ("Password");
+        GridPane.setConstraints(passLabel, 0, 1);
 
-        borderPane.setTop(topMenu);
-        borderPane.setLeft(sideMenu);
+        TextField passInput = new TextField();
+        passInput.setPromptText("Password123");
 
-        Scene scene = new Scene (borderPane, 400, 400);
+        GridPane.setConstraints(passInput, 1, 1);
+
+        Button login = new Button ("Log In");
+
+        GridPane.setConstraints(login, 1, 2);
+
+        grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, login);
+
+        Scene scene = new Scene(grid, 400, 400);
 
         window.setScene(scene);
         window.show();
+
+
+
+        //------Embedding Layouts
+
+        // window = primaryStage;
+        // window.setTitle("Embedding Tutorial");
+
+        // HBox topMenu = new HBox();
+        // Button buttonA = new Button("File");
+        // Button buttonB = new Button("Edit");
+        // Button buttonC = new Button("View");
+
+        // topMenu.getChildren().addAll(buttonA, buttonB, buttonC);
+
+        // VBox sideMenu = new VBox();
+        // Button buttonD = new Button("Search");
+        // Button buttonE = new Button("Record");
+        // Button buttonF = new Button("Play");
+
+        // sideMenu.getChildren().addAll(buttonD, buttonE, buttonF);
+
+        // BorderPane borderPane = new BorderPane();
+
+        // borderPane.setTop(topMenu);
+        // borderPane.setLeft(sideMenu);
+
+        // Scene scene = new Scene (borderPane, 400, 400);
+
+        // window.setScene(scene);
+        // window.show();
 
 
         //----Double Scene switch with Alert Box tutorial
