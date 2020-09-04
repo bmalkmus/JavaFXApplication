@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -46,31 +47,64 @@ public class App extends Application {
         System.out.println(message);
     }
 
+    private void getChoice(ChoiceBox<String> dropdown) {
+        String favorite = dropdown.getValue();
+        System.out.println("Your favorite fruit is: " + favorite);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //CheckBox tutorial
+        //DropDown
 
         window = primaryStage;
-        window.setTitle("Rock, Paper, Scissors");
+        window.setTitle("Dropdown menus");
+        Button button = new Button ("Drop me Down!!");
 
-        CheckBox box1 = new CheckBox("Rock");
-        CheckBox box2 = new CheckBox("Paper");
-        CheckBox box3 = new CheckBox("Scissors");
+        ChoiceBox <String> dropdown = new ChoiceBox<>();
 
-        Button button = new Button("1, 2, 3 Shoot!");
+        dropdown.getItems().addAll("Apples", "Bananas", "Pears", "Peaches", "Mangos", "Strawberries", "Kiwis");
 
-        button.setOnAction(e -> {
-            handleOptions(box1,box2, box3);
-        });
+        dropdown.setValue("Kiwis");
 
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(10,10,10, 10));
-        layout.getChildren().addAll(box1, box2, box3, button);
+        layout.getChildren().addAll(dropdown, button);
+
+        button.setOnAction(e-> {
+            getChoice(dropdown);
+        });
 
         Scene scene = new Scene(layout, 300, 400);
         window.setScene(scene);
         window.show();
+
+        
+
+
+
+        //CheckBox tutorial
+
+        // window = primaryStage;
+        // window.setTitle("Rock, Paper, Scissors");
+
+        // CheckBox box1 = new CheckBox("Rock");
+        // CheckBox box2 = new CheckBox("Paper");
+        // CheckBox box3 = new CheckBox("Scissors");
+
+        // Button button = new Button("1, 2, 3 Shoot!");
+
+        // button.setOnAction(e -> {
+        //     handleOptions(box1,box2, box3);
+        // });
+
+        // VBox layout = new VBox(10);
+        // layout.setPadding(new Insets(10,10,10, 10));
+        // layout.getChildren().addAll(box1, box2, box3, button);
+
+        // Scene scene = new Scene(layout, 300, 400);
+        // window.setScene(scene);
+        // window.show();
         
 
 
