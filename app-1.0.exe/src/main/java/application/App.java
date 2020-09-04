@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 // import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -27,48 +28,96 @@ public class App extends Application {
         launch(args);
     }
 
+    private void handleOptions (CheckBox box1, CheckBox box2, CheckBox box3) {
+        String message = "Weapon Chosen: \n";
+
+        if (box1.isSelected()){
+            message += "Rock\n";
+            
+        }
+        if (box2.isSelected()){
+            message += "Paper\n";
+
+        }
+        if (box3.isSelected()){
+            message += "Scissors\n";
+
+        }
+        System.out.println(message);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //------GridPane
+        //CheckBox tutorial
 
-        window= primaryStage;
-        window.setTitle("This is my creative title");
+        window = primaryStage;
+        window.setTitle("Rock, Paper, Scissors");
 
-        GridPane grid = new GridPane();
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(8);
-        grid.setHgap(10);
+        CheckBox box1 = new CheckBox("Rock");
+        CheckBox box2 = new CheckBox("Paper");
+        CheckBox box3 = new CheckBox("Scissors");
 
-        Label nameLabel = new Label ("Username");
-        GridPane.setConstraints(nameLabel, 0, 0);
+        Button button = new Button("1, 2, 3 Shoot!");
 
-        TextField nameInput = new TextField();
-        nameInput.setPromptText("UserName33");
-
-        GridPane.setConstraints(nameInput, 1, 0);
-
-        Label passLabel = new Label ("Password");
-        GridPane.setConstraints(passLabel, 0, 1);
-
-        TextField passInput = new TextField();
-        passInput.setPromptText("Password123");
-
-        GridPane.setConstraints(passInput, 1, 1);
-
-        Button login = new Button ("Log In");
-        login.setOnAction(e-> {
-            System.out.println("Welcome back, " + nameInput.getText());
+        button.setOnAction(e -> {
+            handleOptions(box1,box2, box3);
         });
 
-        GridPane.setConstraints(login, 1, 2);
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(10,10,10, 10));
+        layout.getChildren().addAll(box1, box2, box3, button);
 
-        grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, login);
-
-        Scene scene = new Scene(grid, 400, 400);
-
+        Scene scene = new Scene(layout, 300, 400);
         window.setScene(scene);
         window.show();
+        
+
+
+
+
+
+
+
+        //------GridPane and User Response
+
+        // window= primaryStage;
+        // window.setTitle("This is my creative title");
+
+        // GridPane grid = new GridPane();
+        // grid.setPadding(new Insets(10, 10, 10, 10));
+        // grid.setVgap(8);
+        // grid.setHgap(10);
+
+        // Label nameLabel = new Label ("Username");
+        // GridPane.setConstraints(nameLabel, 0, 0);
+
+        // TextField nameInput = new TextField();
+        // nameInput.setPromptText("UserName33");
+
+        // GridPane.setConstraints(nameInput, 1, 0);
+
+        // Label passLabel = new Label ("Password");
+        // GridPane.setConstraints(passLabel, 0, 1);
+
+        // TextField passInput = new TextField();
+        // passInput.setPromptText("Password123");
+
+        // GridPane.setConstraints(passInput, 1, 1);
+
+        // Button login = new Button ("Log In");
+        // login.setOnAction(e-> {
+        //     System.out.println("Welcome back, " + nameInput.getText());
+        // });
+
+        // GridPane.setConstraints(login, 1, 2);
+
+        // grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, login);
+
+        // Scene scene = new Scene(grid, 400, 400);
+
+        // window.setScene(scene);
+        // window.show();
 
 
 
