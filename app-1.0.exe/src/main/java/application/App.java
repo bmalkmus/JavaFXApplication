@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +27,9 @@ public class App extends Application {
         Button button1 = new Button ("Go to scene 2");
         button1.setOnAction(e -> window.setScene(scene2));
 
+        Button alertButton = new Button ("Click for alert");
+        alertButton.setOnAction(e -> AlertBox.display("ALERT!!!!!", "SCARED YOU HUH??"));
+
         Label label2 = new Label ("Welcome to page two");
 
         Button button2 = new Button ("Go to scene 1");
@@ -33,12 +37,17 @@ public class App extends Application {
 
 
         VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1);
+        layout1.getChildren().addAll(label1, button1, alertButton);
+        layout1.setAlignment(Pos.CENTER);
+
 
         scene1= new Scene (layout1, 200, 200);
 
         VBox layout2 = new VBox(20);
         layout2.getChildren().addAll(label2, button2);
+        layout2.setAlignment(Pos.CENTER);
+
+
 
         scene2=new Scene (layout2, 200, 200);
 
