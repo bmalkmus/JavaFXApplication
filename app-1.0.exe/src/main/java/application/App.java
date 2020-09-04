@@ -43,7 +43,8 @@ public class App extends Application {
         Label nameLabel = new Label ("Username");
         GridPane.setConstraints(nameLabel, 0, 0);
 
-        TextField nameInput = new TextField("Sample Username");
+        TextField nameInput = new TextField();
+        nameInput.setPromptText("UserName33");
 
         GridPane.setConstraints(nameInput, 1, 0);
 
@@ -56,6 +57,9 @@ public class App extends Application {
         GridPane.setConstraints(passInput, 1, 1);
 
         Button login = new Button ("Log In");
+        login.setOnAction(e-> {
+            System.out.println("Welcome back, " + nameInput.getText());
+        });
 
         GridPane.setConstraints(login, 1, 2);
 
