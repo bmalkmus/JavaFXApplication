@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 // import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -19,6 +22,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     Stage window;
+    ListView<String> listView;
 
     //------Variables for Scene
     // Scene scene1;
@@ -29,55 +33,92 @@ public class App extends Application {
         launch(args);
     }
 
-    private void handleOptions (CheckBox box1, CheckBox box2, CheckBox box3) {
-        String message = "Weapon Chosen: \n";
+    // checkbox formulas
+    // private void handleOptions (CheckBox box1, CheckBox box2, CheckBox box3) {
+    //     String message = "Weapon Chosen: \n";
 
-        if (box1.isSelected()){
-            message += "Rock\n";
+    //     if (box1.isSelected()){
+    //         message += "Rock\n";
             
-        }
-        if (box2.isSelected()){
-            message += "Paper\n";
+    //     }
+    //     if (box2.isSelected()){
+    //         message += "Paper\n";
 
-        }
-        if (box3.isSelected()){
-            message += "Scissors\n";
+    //     }
+    //     if (box3.isSelected()){
+    //         message += "Scissors\n";
+
+    //     }
+    //     System.out.println(message);
+    // }
+
+    // private void getChoice(ChoiceBox<String> dropdown) {
+    //     String favorite = dropdown.getValue();
+    //     System.out.println("Your favorite fruit is: " + favorite);
+    // }
+
+    
+    private void buttonClicked() {
+        String message = "";
+        ObservableList<String> movies;
+        movies=listView.getSelectionModel().getSelectedItems();
+
+        for (String m:movies){
+            message += m + "\n";
 
         }
         System.out.println(message);
     }
 
-    private void getChoice(ChoiceBox<String> dropdown) {
-        String favorite = dropdown.getValue();
-        System.out.println("Your favorite fruit is: " + favorite);
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //DropDown
-
+        //List View
+        
         window = primaryStage;
-        window.setTitle("Dropdown menus");
-        Button button = new Button ("Drop me Down!!");
+        window.setTitle("ListView");
+        Button button = new Button ("Click me for list view");
 
-        ChoiceBox <String> dropdown = new ChoiceBox<>();
+        listView = new ListView<>();
+        listView.getItems().addAll("Choice A", "Choice B", "Choice C", "Choice D");
+        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        dropdown.getItems().addAll("Apples", "Bananas", "Pears", "Peaches", "Mangos", "Strawberries", "Kiwis");
-
-        dropdown.setValue("Kiwis");
+        button.setOnAction(e-> buttonClicked());;
 
         VBox layout = new VBox(10);
-        layout.setPadding(new Insets(10,10,10, 10));
-        layout.getChildren().addAll(dropdown, button);
+        layout.setPadding(new Insets(20, 20, 20, 20));
+        layout.getChildren().addAll(listView, button);
 
-        button.setOnAction(e-> {
-            getChoice(dropdown);
-        });
-
-        Scene scene = new Scene(layout, 300, 400);
+        Scene scene = new Scene (layout, 300, 250);
         window.setScene(scene);
         window.show();
+
+    
+        
+
+        //DropDown
+
+        // window = primaryStage;
+        // window.setTitle("Dropdown menus");
+        // Button button = new Button ("Drop me Down!!");
+
+        // ChoiceBox <String> dropdown = new ChoiceBox<>();
+
+        // dropdown.getItems().addAll("Apples", "Bananas", "Pears", "Peaches", "Mangos", "Strawberries", "Kiwis");
+
+        // dropdown.setValue("Kiwis");
+
+        // VBox layout = new VBox(10);
+        // layout.setPadding(new Insets(10,10,10, 10));
+        // layout.getChildren().addAll(dropdown, button);
+
+        // button.setOnAction(e-> {
+        //     getChoice(dropdown);
+        // });
+
+        // Scene scene = new Scene(layout, 300, 400);
+        // window.setScene(scene);
+        // window.show();
 
         
 
@@ -236,6 +277,7 @@ public class App extends Application {
 
     }
 
+  
     
     
 }
