@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     Stage window;
-    ListView<String> listView;
+    // ListView<String> listView;
 
     //------Variables for Scene
     // Scene scene1;
@@ -57,41 +57,41 @@ public class App extends Application {
     //     System.out.println("Your favorite fruit is: " + favorite);
     // }
 
-    
-    private void buttonClicked() {
-        String message = "";
-        ObservableList<String> movies;
-        movies=listView.getSelectionModel().getSelectedItems();
+    // ---------ListView button show---------
+    // private void buttonClicked() {
+    //     String message = "";
+    //     ObservableList<String> movies;
+    //     movies=listView.getSelectionModel().getSelectedItems();
 
-        for (String m:movies){
-            message += m + "\n";
+    //     for (String m:movies){
+    //         message += m + "\n";
 
-        }
-        System.out.println(message);
-    }
+    //     }
+    //     System.out.println(message);
+    // }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //List View
+        //---------List View-----------
         
-        window = primaryStage;
-        window.setTitle("ListView");
-        Button button = new Button ("Click me for list view");
+        // window = primaryStage;
+        // window.setTitle("ListView");
+        // Button button = new Button ("Click me for list view");
 
-        listView = new ListView<>();
-        listView.getItems().addAll("Choice A", "Choice B", "Choice C", "Choice D");
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        // listView = new ListView<>();
+        // listView.getItems().addAll("Choice A", "Choice B", "Choice C", "Choice D");
+        // listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        button.setOnAction(e-> buttonClicked());;
+        // button.setOnAction(e-> buttonClicked());;
 
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(20, 20, 20, 20));
-        layout.getChildren().addAll(listView, button);
+        // VBox layout = new VBox(10);
+        // layout.setPadding(new Insets(20, 20, 20, 20));
+        // layout.getChildren().addAll(listView, button);
 
-        Scene scene = new Scene (layout, 300, 250);
-        window.setScene(scene);
-        window.show();
+        // Scene scene = new Scene (layout, 300, 250);
+        // window.setScene(scene);
+        // window.show();
 
     
         
