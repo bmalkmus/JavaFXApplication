@@ -156,43 +156,50 @@ public class App extends Application {
 
         //------GridPane and User Response
 
-        // window= primaryStage;
-        // window.setTitle("This is my creative title");
+        window= primaryStage;
+        window.setTitle("This is my creative title");
 
-        // GridPane grid = new GridPane();
-        // grid.setPadding(new Insets(10, 10, 10, 10));
-        // grid.setVgap(8);
-        // grid.setHgap(10);
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(8);
+        grid.setHgap(10);
 
-        // Label nameLabel = new Label ("Username");
-        // GridPane.setConstraints(nameLabel, 0, 0);
+        Label nameLabel = new Label ("Username");
+        nameLabel.setStyle("-fx-text-fill:#e8e8e8");
+        GridPane.setConstraints(nameLabel, 0, 0);
 
-        // TextField nameInput = new TextField();
-        // nameInput.setPromptText("UserName33");
+        TextField nameInput = new TextField();
+        nameInput.setPromptText("UserName33");
 
-        // GridPane.setConstraints(nameInput, 1, 0);
+        GridPane.setConstraints(nameInput, 1, 0);
 
-        // Label passLabel = new Label ("Password");
-        // GridPane.setConstraints(passLabel, 0, 1);
+        Label passLabel = new Label ("Password");
+        GridPane.setConstraints(passLabel, 0, 1);
 
-        // TextField passInput = new TextField();
-        // passInput.setPromptText("Password123");
+        TextField passInput = new TextField();
+        passInput.setPromptText("Password123");
 
-        // GridPane.setConstraints(passInput, 1, 1);
+        GridPane.setConstraints(passInput, 1, 1);
 
-        // Button login = new Button ("Log In");
-        // login.setOnAction(e-> {
-        //     System.out.println("Welcome back, " + nameInput.getText());
-        // });
+        Button login = new Button ("Log In");
+        login.setOnAction(e-> {
+            // setUserAgentStylesheet(STYLESHEET_CASPIAN);
+            System.out.println("Welcome back, " + nameInput.getText());
+        });
 
-        // GridPane.setConstraints(login, 1, 2);
+        Button signUp = new Button ("sign-up");
+        GridPane.setConstraints(signUp, 1, 3);
+        signUp.getStyleClass().add("button-blue");
 
-        // grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, login);
+        GridPane.setConstraints(login, 1, 2);
 
-        // Scene scene = new Scene(grid, 400, 400);
+        grid.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, login, signUp);
 
-        // window.setScene(scene);
-        // window.show();
+        Scene scene = new Scene(grid, 400, 400);
+
+        scene.getStylesheets().add(this.getClass().getResource("Viper.css").toExternalForm());
+        window.setScene(scene);
+        window.show();
 
 
 
