@@ -4,7 +4,9 @@ import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -71,9 +73,23 @@ public class App2 extends Application {
         });
         optMenu.getItems().addAll(showLines, autoSave);
 
+        //Radio Menu
+        Menu difficultyMenu = new Menu("Difficulty");
+        ToggleGroup difficultyTog = new ToggleGroup();
+
+        RadioMenuItem easy = new RadioMenuItem("easy");
+        RadioMenuItem medium = new RadioMenuItem("medium");
+        RadioMenuItem hard = new RadioMenuItem("hard");
+        easy.setToggleGroup(difficultyTog);
+        medium.setToggleGroup(difficultyTog);
+        hard.setToggleGroup(difficultyTog);
+
+        difficultyMenu.getItems().addAll(easy,medium,hard);
+
+
         //main menu-bar
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(fileMenu, editMenu, optMenu);
+        menuBar.getMenus().addAll(fileMenu, editMenu, optMenu, difficultyMenu);
 
 
         layout = new BorderPane();  
