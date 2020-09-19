@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -46,9 +47,33 @@ public class App2 extends Application {
         rotate.setDisable(true);
         editMenu.getItems().add(rotate);
 
+        //Help Menu
+        Menu optMenu = new Menu("Options");
+        CheckMenuItem showLines = new CheckMenuItem("Show Line Numbers");
+        showLines.setOnAction(e -> {
+            if(showLines.isSelected()){
+                System.out.println("Program will now display line numbers");
+            }
+            else{
+                System.out.println("Lines are now gone");
+            }
+
+        });
+        CheckMenuItem autoSave = new CheckMenuItem("Auto Save");
+        autoSave.setSelected(true);
+        autoSave.setOnAction(e->{
+            if(autoSave.isSelected()){
+                System.out.println("Auto Save is enabled");
+            }
+            else{
+                System.out.println("Manual Save enabled");
+            }
+        });
+        optMenu.getItems().addAll(showLines, autoSave);
+
         //main menu-bar
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(fileMenu, editMenu);
+        menuBar.getMenus().addAll(fileMenu, editMenu, optMenu);
 
 
         layout = new BorderPane();  
